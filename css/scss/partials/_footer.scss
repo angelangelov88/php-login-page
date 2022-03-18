@@ -1,0 +1,64 @@
+@use '../abstracts/index' as *;
+
+//General styling for the footer
+footer {
+  background-color: $brand-color;
+  color: $white-color-text;
+}
+
+//Styling of the footer container
+#footer-container {
+  //border: 2px red solid;
+  display: flex;
+  flex-direction: column;
+  @media only screen and (min-width: $break-m) {
+    flex-direction: row;
+    justify-content: space-evenly;
+    @media screen and (-ms-high-contrast: none) {
+      justify-content: space-around;}  
+}
+}
+
+//Transforming the titles to uppercase
+footer h4 {
+  text-transform: uppercase;
+  margin-left: 20px;
+}
+
+//Removing the dots before the li elements and some more styling for them
+footer li {
+  list-style-type: none;
+  margin-left: -20px;
+  font-weight: 100;
+  line-height: 20px !important;
+}
+
+//Added some hover effect to the links
+#footer-3 li:hover,
+.li-footer-hover:hover {
+  text-decoration: underline;
+//   color: $orange-header;
+}
+
+//Styling for the copyright element on the bottom of the page
+#copyright {
+  margin-left: 20px;
+  padding-bottom: 20px;
+  text-align: left;
+  @media only screen and (min-width: $break-m) {
+    text-align: center;
+}
+}
+
+//Styling for the arrows in the SECTIONS footer element
+.arrow {
+//   border: solid $brand-color-light;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}

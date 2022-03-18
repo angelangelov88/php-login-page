@@ -1,0 +1,190 @@
+@use '../abstracts/index' as *;
+
+
+li {
+  list-style-type: none;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  transition: all .4s ease-out;
+  @media only screen and (min-width: $break-xl) {
+    margin: 2.5rem 3rem;
+}
+}
+
+//I added the sticky class for the navbar when the user scrolls down. I have styled it a bit differently than the main one - it is green/transparent and has different colours for the logo, text and the button. Also it appears only on bigger screens over 992px
+.sticky {
+  @media only screen and (min-width: $break-l) {
+    background-color: rgba($color: $brand-color, $alpha: .7);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    margin: 0px;
+    padding: 10px;
+    transition: all .4s ease-out;
+}
+}
+
+.sticky .header-btn {
+  background-color: white;
+  color: $brand-color;
+}
+
+.sticky .header-btn:hover {
+  background-color: darken($color: white, $amount: 20);
+  color: $brand-color ;
+}
+
+.sticky #logo {
+  background-image: url("../assets/images/goco-group-logo2.png");
+  background-color: transparent;
+  color: $brand-color;
+}
+
+.sticky .li-header:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+//This is the logo in the main navbar
+#logo {
+  background-image: url('../assets/images/goco-group-logo.png');
+  background-size: 120px 50px;
+  width: 120px;
+  height: 50px;
+  @media only screen and (min-width: $break-xxl) {
+    margin-left: 100px;
+}
+}
+
+#ul-header {
+  display: none;
+  @media only screen and (min-width: $break-l) {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    font-size: 12px;
+    padding-top: 8px;
+}
+  @media only screen and (min-width: $break-xl) {
+    font-size: initial;
+}
+}
+
+.blocker {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+//I added an extra html for the header for small screens. This one works only on small screens and change to display:none for bigger. This is basically the hamburger dropdown
+#header-small {
+  text-transform: uppercase;
+  color: white;
+  font-weight: 600;
+  background-color: rgba($brand-color, 0.8);
+  position: absolute;
+  top: 73px;
+  right: 0;
+  border-radius: 4px;
+  display: none;
+  z-index: 2;
+  @media only screen and (min-width: $break-m) {
+    display: none;
+}
+}
+
+//Some styling that could not go in the #header-small
+#header-small ul {
+  list-style-type: none;
+  text-align: end;
+  padding-right: 10px;
+}
+
+//Separating the li elements on small screen (the drop down)
+.li-header-small {
+  line-height: 45px;
+}
+
+//Hamburger styling
+.btn-menu-xs {
+  background-color: $brand-color;
+  height: 55px;
+  width: 65px;
+  border-radius: 4px;
+  z-index: 1;
+  @media only screen and (min-width: $break-l) {
+    display: none;
+}
+}
+
+.btn-menu-xs:hover {
+  background-color: $brand-color;
+  cursor: pointer;
+}
+
+// The next few properties are for the hamburger
+.menu-lines {
+  padding: 10px 0 4px 16px;
+}
+
+.menu-x {
+  display: none;
+  color: white;
+  font-size: 40px;
+  margin-top: 0px;
+  margin-left: 21px;
+}
+
+.menu-line {
+  width: 33px;
+  height: 3px;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.menu-title {
+  font-size: 12px;
+  text-align: center;
+  margin-top: -7px;
+  color: white;
+  font-weight: 600;
+}
+
+//This is styling for the header li elements
+.li-header {
+  margin: 10px;
+  font-weight: 600;
+  transition: all .2s ease-in;
+}
+
+.li-header:hover {
+  color: $brand-color;
+}
+
+//This is the button styling. I used a mixin to add the properties as I use same for all the buttons on the page. The button is hidden on very small screens and appears in the middle on middle sized screens. On big screens it is on the right side as requested
+.header-btn {
+  display: none;
+  @include btn;
+  @media only screen and (min-width: $break-s) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media only screen and (min-width: $break-xl) {
+    width: initial;
+  }
+}
+
+.header-btn:hover {
+  background-color: darken($color: $brand-color, $amount: 10);
+}

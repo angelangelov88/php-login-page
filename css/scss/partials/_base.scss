@@ -1,0 +1,19 @@
+@use '../abstracts/index' as *;
+
+
+body {
+  font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
+  margin-bottom: 50px;
+  color: #0a3126;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.main-container {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
