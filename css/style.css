@@ -2,6 +2,7 @@ body {
   font-family: Verdana, Georgia, "Times New Roman", Times, serif;
   margin-bottom: 50px;
   color: #0a3126;
+  margin-top: 200px;
 }
 
 a {
@@ -55,7 +56,7 @@ header {
 }
 
 .sticky #logo {
-  background-image: url("../assets/images/goco-group-logo2.png");
+  background-image: url("../../../public/images/favicon.png");
   background-color: transparent;
   color: #2fa38d;
 }
@@ -66,7 +67,7 @@ header {
 }
 
 #logo {
-  background-image: url("../assets/images/goco-group-logo.png");
+  background-image: url("../../../public/images/favicon.png");
   background-size: 120px 50px;
   width: 120px;
   height: 50px;
@@ -297,7 +298,6 @@ input, button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #53565A;
 }
 
 form {
@@ -366,7 +366,8 @@ form .form-inner .form-group input:focus {
 }
 
 form .form-inner input[type=submit],
-.welcome button {
+.welcome button,
+.btn {
   display: inline-block;
   padding: 10px 15px;
   border-radius: 8px;
@@ -380,7 +381,8 @@ form .form-inner input[type=submit],
 }
 
 form .form-inner input[type=submit]:hover,
-.welcome button:hover {
+.welcome button:hover,
+.btn:hover {
   background-position: 100% 0%;
 }
 

@@ -19,7 +19,7 @@ input, button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #53565A;
+    // background-color: #53565A;
 }
 
 form {
@@ -89,7 +89,8 @@ form .form-inner .form-group input:focus {
 }
 
 form .form-inner input[type='submit'],
-.welcome button {
+.welcome button,
+.btn {
     display: inline-block;
     padding: 10px 15px;
     border-radius: 8px;
@@ -103,7 +104,8 @@ form .form-inner input[type='submit'],
 }   
 
 form .form-inner input[type='submit']:hover,
-.welcome button:hover {
+.welcome button:hover,
+.btn:hover {
     background-position: 100% 0%;
 }
 

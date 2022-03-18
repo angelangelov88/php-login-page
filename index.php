@@ -1,24 +1,23 @@
+<?php 
+session_start();
+
+include("./inc/connection.php");
+include("./inc/functions.php");
+
+    $user_data = check_login($db);
+    
+
+?>
+<!-- Add this variable here to make sure that the title reflect the page -->
+<?php $title="Main Page" ?>
+
 <!-- HTML head -->
 <?php include "./inc/head.php" ?>
 
 <body>
 <?php include "./inc/header.php" ?>
 
-    <form action='loggedPage.php' method="post">
-        <div class="form-inner">
-            <h2>Login</h2>
-                <div className="error">Details do not match!</div>
-            <div className="form-group">
-                <label for="email">Email:</label>
-                <input type="email" name='email' id='email'>
-            </div>
-            <div className="form-group">
-                <label for="password">Password:</label>
-                <input type="password" name='password' id='password'>
-            </div>
-            <input type="submit" value="Login" />
-        </div>
-    </form>
+<h2>This is the main page</h2>
 
 
  

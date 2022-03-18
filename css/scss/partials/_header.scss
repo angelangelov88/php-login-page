@@ -40,7 +40,7 @@ header {
 }
 
 .sticky #logo {
-  background-image: url("../assets/images/goco-group-logo2.png");
+  background-image: url("../../../public/images/favicon.png");
   background-color: transparent;
   color: $brand-color;
 }
@@ -52,7 +52,7 @@ header {
 
 //This is the logo in the main navbar
 #logo {
-  background-image: url('../assets/images/goco-group-logo.png');
+  background-image: url('../../../public/images/favicon.png');
   background-size: 120px 50px;
   width: 120px;
   height: 50px;
