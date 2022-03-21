@@ -1,6 +1,5 @@
 <?php
 
-
 function check_login($db) {
     if(isset($_SESSION['id'])){
 
@@ -9,11 +8,15 @@ function check_login($db) {
 
         $stmt = $db->prepare($query);
         $stmt->execute();
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $results;
- 
-        var_dump($results);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+        var_dump($result);
 
+        if ($result && $result->rowCount() > 0) {
+            $user_data = $result->fetchAll(PDO::FETCH_ASSOC);
+            return $user_data;
+        }
+        
         // $result = mysqli_query($db, $query);
         // if ($result && mysqli_num_rows($result) > 0) {
         //     $user_data = mysqli_fetch_assoc($result);
@@ -22,34 +25,8 @@ function check_login($db) {
     
 
 }
-//redirect to login page
+// redirect to login page
     header("Location: login.php");
     die;
 }
-
-
-
-// Function to pull the news from the database
-// function pullUsername($db) {
-//   try {
-//     $query = "
-//     SELECT news.heading, news.description, news.news_image, news.date, author.profile_image, category.category_name, author.full_name
-//     FROM news
-//     JOIN author ON news.author_id = author.author_id
-//     JOIN category ON news.category_id = category.category_id
-//     Order by RAND()
-//     LIMIT 3
-//     ";
-//     $stmt = $db->prepare($query);
-//     $stmt->execute();
-//     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//     return $results;
-//   } catch (Exception $e) {
-//     echo "Unable to connect - ";
-//     echo $e->getMessage();
-//   }
-// }
-
-
-
 ?>

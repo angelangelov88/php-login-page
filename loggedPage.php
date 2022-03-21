@@ -23,6 +23,7 @@ session_start();
         Welcome <?php echo $_POST["username"]; ?><br>
         Your email address is: <?php echo $_POST["username"]; ?>
 
+        New username: <?php echo $user_data['username']; ?>
       
     </div>
 <!-- FOOTER -->

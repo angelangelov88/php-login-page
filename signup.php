@@ -5,12 +5,13 @@ session_start();
     include("./inc/functions.php");
 
     if($_SERVER['REQUEST_METHOD'] == "POST") {
-        //something was posted
+
         $username = $_POST['username'];
         $password = $_POST['password'];
 
         if(!empty($username) && !empty($password)) {
             //save to db
+
             // $query = "INSERT INTO users (username, password) VALUES ($username, $password)";
 
             // mysqli_query($db, $query);
@@ -18,22 +19,23 @@ session_start();
             // header("Location: login.php");
             // die;
 
-                try {
+            try {
                   $query = "INSERT INTO users (username, password) VALUES (:username, :password)";
               
                 $stmt = $db->prepare($query);
                 $stmt->bindParam(":username", $username);
                 $stmt->bindParam(":password", $password);
-
                 $stmt->execute();
-                return true;
+                
+                header("Location: login.php");
+                die;
+
               
-                } catch (Exception $e) {
+            } catch (Exception $e) {
                   echo "Unable to connect - ";
                   echo $e->getMessage();
                   return false;
                 }
-             
         } else {
             echo "Please enter some valid information!";
         }
@@ -53,19 +55,21 @@ session_start();
 
 <form method="post">
         <div class="form-inner">
-            <h2>Login</h2>
-                <div className="error">Details do not match!</div>
+            <h2>Signup</h2>
+                <!-- <div className="error">Details do not match!</div> -->
             <div className="form-group">
                 <label for="username">Email:</label>
                 <input type="text" name='username' id='username'>
             </div>
+            <br>
             <div className="form-group">
                 <label for="password">Password:</label>
                 <input type="password" name='password' id='password'>
             </div>
-            <input type="submit" value="Signup">
             <br>
-            <a href="login.php" class="btn">Login</a>
+            <input type="submit" value="Signup">
+            <br><br>
+            <a href="login.php" class="btn">Click to Login</a>
         </div>
     </form>
 
