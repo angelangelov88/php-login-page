@@ -2,7 +2,6 @@ body {
   font-family: Verdana, Georgia, "Times New Roman", Times, serif;
   margin-bottom: 50px;
   color: #0a3126;
-  margin-top: 200px;
 }
 
 a {
@@ -371,7 +370,7 @@ form .form-inner input[type=submit],
   display: inline-block;
   padding: 10px 15px;
   border-radius: 8px;
-  background-image: linear-gradient(to right, #FFCE00 50%, #FFCE00 50%, #FE4880);
+  background-color: #2fa38d;
   background-size: 200%;
   background-position: 0%;
   transition: 0.4s;
@@ -383,7 +382,7 @@ form .form-inner input[type=submit],
 form .form-inner input[type=submit]:hover,
 .welcome button:hover,
 .btn:hover {
-  background-position: 100% 0%;
+  background-color: #247b6b;
 }
 
 .welcome {
@@ -403,4 +402,8 @@ form .form-inner input[type=submit]:hover,
 .welcome h2 span {
   color: #FE4880;
   font-weight: 700;
+}
+
+.error {
+  color: red;
 }/*# sourceMappingURL=style.css.map */

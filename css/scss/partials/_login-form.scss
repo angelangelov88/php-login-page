@@ -94,7 +94,8 @@ form .form-inner input[type='submit'],
     display: inline-block;
     padding: 10px 15px;
     border-radius: 8px;
-    background-image: linear-gradient(to right, #FFCE00 50%, #FFCE00 50%, #FE4880);
+    // background-image: linear-gradient(to right, #FFCE00 50%, #FFCE00 50%, #FE4880);
+    background-color: $brand-color;
     background-size: 200%;
     background-position: 0%;
     transition: 0.4s;
@@ -106,7 +107,8 @@ form .form-inner input[type='submit'],
 form .form-inner input[type='submit']:hover,
 .welcome button:hover,
 .btn:hover {
-    background-position: 100% 0%;
+    // background-position: 100% 0%;
+    background-color: darken($color: $brand-color, $amount: 10%);
 }
 
 .welcome {
@@ -127,4 +129,8 @@ form .form-inner input[type='submit']:hover,
     color: #FE4880;
     font-weight: 700;
 
+}
+
+.error {
+    color: red;
 }

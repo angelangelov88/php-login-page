@@ -1,12 +1,18 @@
 <?php
 
-session_start();
+include('./inc/autoload.php');
 
 if (isset($_SESSION['id'])) {
     unset($_SESSION['id']);
 }
 
-header("Location: index.php");
+if (isset($_SESSION['username'])) {
+    unset($_SESSION['username']);
+}
+
+
+
+header('Location: login.php');
 die;
 
 
