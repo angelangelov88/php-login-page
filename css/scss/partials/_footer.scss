@@ -8,6 +8,7 @@ footer {
 
 //Styling of the footer container
 #footer-container {
+  padding-top: 20px;
   //border: 2px red solid;
   display: flex;
   flex-direction: column;
@@ -17,6 +18,11 @@ footer {
     @media screen and (-ms-high-contrast: none) {
       justify-content: space-around;}  
 }
+}
+
+#footer-container div{
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 //Transforming the titles to uppercase
@@ -43,6 +49,7 @@ footer li {
 //Styling for the copyright element on the bottom of the page
 #copyright {
   margin-left: 20px;
+  padding-top: 20px;
   padding-bottom: 20px;
   text-align: left;
   @media only screen and (min-width: $break-m) {
@@ -62,3 +69,5 @@ footer li {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }
+
+

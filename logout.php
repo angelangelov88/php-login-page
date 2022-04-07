@@ -2,8 +2,8 @@
 
 include('./inc/autoload.php');
 
-if (isset($_SESSION['id'])) {
-    unset($_SESSION['id']);
+if (isset($_SESSION['url_address'])) {
+    unset($_SESSION['url_address']);
 }
 
 if (isset($_SESSION['username'])) {

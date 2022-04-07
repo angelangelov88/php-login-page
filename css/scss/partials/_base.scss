@@ -3,9 +3,16 @@
 
 body {
   font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
-  margin-bottom: 50px;
+  // margin-bottom: 50px;
   color: #0a3126;
   // margin-top: 200px;
+}
+
+* {
+  margin: 0;
+  // padding: 0;
+  // box-sizing: border-box;
+  // font-family: montserrat, sans-serif;
 }
 
 a {

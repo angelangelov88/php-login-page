@@ -22,15 +22,15 @@
       <div id='footer-3'>
         <h4>Sections</h4>
         <ul class='ul-footer'>
-          <li class='li-arrow'><a href='#'><i class='arrow right'></i>&nbsp;&nbsp;About</a></li>
-          <li class='li-arrow'><a href='#'><i class='arrow right'></i>&nbsp;&nbsp;Products</a></li>
-          <li class='li-arrow'><a href='#'><i class='arrow right'></i>&nbsp;&nbsp;Testimonials</a></li>
-          <li class='li-arrow'><a href='#'><i class='arrow right'></i>&nbsp;&nbsp;Order</a></li>
-          <li class='li-arrow'><a href='#'><i class='arrow right'></i>&nbsp;&nbsp;Privacy Policy</a></li>
+          <li class='li-arrow'><a href='#'>About</a></li>
+          <li class='li-arrow'><a href='#'>Products</a></li>
+          <li class='li-arrow'><a href='#'>Testimonials</a></li>
+          <li class='li-arrow'><a href='#'>Order</a></li>
+          <li class='li-arrow'><a href='#'>Privacy Policy</a></li>
         </ul>
       </div>
     </div>
     <div id='copyright'>
-        Copyright &copy; <em id='date'></em>Baker's Dozen. All rights reserved 2021 
+        Copyright &copy; <em id='date'></em>Baker's Dozen. All rights reserved <?php echo date("Y"); ?>
     </div>    
   </footer>

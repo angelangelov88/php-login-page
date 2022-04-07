@@ -7,8 +7,11 @@
     $tocken = get_random_string(60);
     if($_SERVER['REQUEST_METHOD'] == "POST") {
         $name = $_POST['name'];
+        $url_address = get_random_string(60);
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
 
         if(
             !preg_match("/^[a-z ,.'-]+$/i", $name) 
@@ -18,44 +21,34 @@
 //Underscore or dot can't be used multiple times in a row 
 //Minimum 5 characters and maximum 20
             || !preg_match("/^(?=[a-zA-Z0-9._]{5,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/", $username) 
-//Minimum eight characters, at least one letter, one number and one special character:
+//Minimum eight characters, at least one capital letter, one lowercase letter, one number and one special character:
             || !preg_match("/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/", $password)) {
             $Error = 'Are you sure you got your details correctly?';
         } 
 
         //check if email exists
         $query = "SELECT * FROM users WHERE username = :username LIMIT 1";
-                $stmt = $db->prepare($query);
-                $stmt->bindParam(":username", $username);
-                $check = $stmt->execute();
-                // var_dump($stmt);
-                if($check) {
-                    $data = $stmt->fetchAll(PDO::FETCH_OBJ);
-                    if(is_array($data) && count($data) > 0) {
-                        $Error = 'Someone is already using this username';
-                    }
-                }
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(":username", $username);
+        $check = $stmt->execute();
+        // var_dump($stmt);
+        if($check) {
+            $data = $stmt->fetchAll(PDO::FETCH_OBJ);
+            if(is_array($data) && count($data) > 0) {
+                $Error = 'Someone is already using this username';
+            }
+        }
 
         if ($Error == "") {
-        // $name = esc($name);
-        // $username = esc($username);
-        // $password = esc($password);
-
-        // if(!empty($username) && !empty($password)) {
-        //     //save to db
-
-        //     // $query = "INSERT INTO users (username, password) VALUES ($username, $password)";
-        //     // mysqli_query($db, $query);
-        //     // header("Location: login.php");
-        //     // die;
         try {
-            $query = "INSERT INTO users (name, username, password) VALUES (:name, :username, :password)";
+            $query = "INSERT INTO users (url_address, name, username, password) VALUES (:url_address, :name, :username, :password)";
             $stmt = $db->prepare($query);
+            $stmt->bindParam(":url_address", $url_address);
             $stmt->bindParam(":name", $name);
             $stmt->bindParam(":username", $username);
-            $stmt->bindParam(":password", $password);
+            $stmt->bindParam(":password", $hash);
             $stmt->execute();
-            
+
             header("Location: login.php");
             die;              
         } catch (Exception $e) {
@@ -81,34 +74,40 @@
 
 
 <form method="post">
-        <div class="form-inner">
-            <h2>Signup</h2>
-            <div class="error"><?php
-                if(isset($Error) && $Error != "") {
-                    echo "$Error";
-                }
-            ?></div>
-                <!-- <div className="error">Details do not match!</div> -->
-            <div className="form-group">
-                <label for="name">Name:</label>
-                <input type="text" name='name' id='name' value="<?php echo $name ?>" required>
-            </div>
-            <br>
-            <div className="form-group">
-                <label for="username">Username:</label>
-                <input type="text" name='username' id='username' value="<?php echo $username ?>" required>
-            </div>
-            <br>
-            <div className="form-group">
-                <label for="password">Password:</label>
-                <input type="password" name='password' id='password' required>
-            </div>
-            <br>
-            <input type="submit" value="Signup">
-            <br><br>
-            <a href="login.php" class="btn">Click to Login</a>
+    <div class="form-inner">
+        <h2>Signup</h2>
+        <div class="error"><?php
+            if(isset($Error) && $Error != "") {
+                echo "$Error";
+            }
+        ?></div>
+            <!-- <div className="error">Details do not match!</div> -->
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name='name' id='name' value="<?php echo $name ?>" required>
+            <span>Please make sure you do not have any special characters in the name field</span>
         </div>
-    </form>
+        <br>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" name='username' id='username' value="<?php echo $username ?>" required>
+            <span>Username can contain a letter, a number, an underscore or a dot and have a minimum of 5 and maximum of 20 characters</span>
+
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" name='password' class='password' required>
+            <span>Password must be minimum 8 characters with at least one capital letter, one lowercase letter, one number and one special character (@$!%*#?&)</span>
+            <i class="far fa-eye fa-eye-signup" id="togglePassword"></i>
+
+        </div>
+        <br>
+        <input type="submit" value="Signup">
+        <br><br>
+        <p class="gray-text">Already registered? <a href='login.php' class='green-text'>Sign in</a></p>
+    </div>
+</form>
 
 
 <!-- FOOTER -->

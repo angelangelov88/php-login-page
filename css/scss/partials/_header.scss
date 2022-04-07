@@ -9,6 +9,7 @@ header {
   display: flex;
   justify-content: space-between;
   transition: all .4s ease-out;
+  z-index: 2;
   @media only screen and (min-width: $break-xl) {
     margin: 2.5rem 3rem;
 }
@@ -84,6 +85,7 @@ header {
   bottom: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.6);
+  z-index: 2;
 }
 
 //I added an extra html for the header for small screens. This one works only on small screens and change to display:none for bigger. This is basically the hamburger dropdown
@@ -121,7 +123,7 @@ header {
   height: 55px;
   width: 65px;
   border-radius: 4px;
-  z-index: 1;
+  z-index: 2;
   @media only screen and (min-width: $break-l) {
     display: none;
 }

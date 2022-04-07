@@ -1,3 +1,4 @@
+
 <?php 
 
 include('./inc/autoload.php');
@@ -10,59 +11,37 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'
     $Error = '';
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 
     if(!empty($username) && !empty($password)) {
-        // $query = 'SELECT * FROM users WHERE username = '$username' LIMIT 1';
-        // $result = mysqli_query($db, $query);
-        // if($result) {
-        //     if($result && mysqli_num_rows($result) > 0) {
-        //         $user_data = mysqli_fetch_assoc($result);
-        //         if($user_data['password'] === $password) {
-        //             $_SESSION['id'] = $user_data['id'];
-        //             header('Location: loggedPage.php');
-        //             die;                    
-        //         }
-        //     }
-        // }
         //read from db
             try {
-                $query = 'SELECT * FROM users WHERE username = :username && password = :password LIMIT 1';
+                $query = 'SELECT * FROM users WHERE username = :username LIMIT 1';
+                // $query = 'SELECT * FROM users WHERE username = :username && password = :password LIMIT 1';
                 $stmt = $db->prepare($query);
                 $stmt->bindParam(':username', $username);
-                $stmt->bindParam(':password', $password);
+                // $stmt->bindParam(':password', $hash);
                 $check = $stmt->execute();
                 // var_dump($stmt);
                 if($check) {
                     $data = $stmt->fetchAll(PDO::FETCH_OBJ);
                     if(is_array($data) && count($data) > 0) {
                         $data = $data[0];
-                        $_SESSION['username'] = $data->username;
-                        $_SESSION['id'] = $data->id;
-
-                        header('Location: loggedPage.php');
-                        die;                    
+//This line checks the hashed password and if correct returns true and continues with the code
+                        if(password_verify($password, $hashed_password)) {
+                            $_SESSION['username'] = $data->username;
+                            $_SESSION['id'] = $data->id;
+                            $_SESSION['url_address'] = $data->url_address;
+    
+                            // echo $_SESSION['url_address'];
+                            // echo $_SESSION['username'];
+    
+                            header('Location: loggedPage.php');
+                            die;                    
+                        }
                     }
                 }
-                // $count = $stmt->rowCount();
-                // $result = $stmt->fetchAll(PDO::FETCH_CLASS);
-                // return $result;
-
-                // var_dump($user_data);
-                // if($result) {
-                //     // if ($result && $stmt->rowCount() > 0) {
-                //         if($count > 0) {
-                //         $user_data = $stmt->fetchAll(PDO::FETCH_CLASS);
-                //         if($user_data['password'] === $password) {
-                //             $_SESSION['id'] = $user_data['id'];
-                //             var_dump($user_data);
-                //             echo 'Wrong';
-
-                //             header('Location: loggedPage.php');
-                //             die;                    
-                //         }
-                // }
-                // }   
             } catch (Exception $e) {
               echo 'Unable to connect - ';
               echo $e->getMessage();
@@ -70,11 +49,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'
             }
             $Error = 'Wrong username or password!';
     } else {
-        echo 'Please enter some valid information!';
+        $Error = 'Please enter some valid information!';
     }
 
-    // echo $_SESSION['url_address'];
-    // echo $_SESSION['username'];
+    
 }
 
 $_SESSION['token'] = get_random_string(60);
@@ -100,21 +78,24 @@ $_SESSION['token'] = get_random_string(60);
                     echo "$Error";
                 } 
                 ?></div>
-            <div className='form-group'>
+            <div class='form-group'>
                 <label for='username'>Username:</label>
                 <input type='text' name='username' id='username'>
             </div>
             <br>
-            <div className='form-group'>
+            <div class='form-group'>
                 <label for='password'>Password:</label>
-                <input type='password' name='password' id='password'>
+                <input type='password' name='password' class='password'>
+                <i class="far fa-eye" id="togglePassword"></i>
+
             </div>
             <br>
             <input type='hidden' name='token' value="<?php echo $_SESSION['token']; ?>">
             <br>
             <input type='submit' value='Login'>
             <br><br>
-            <a href='signup.php' class='btn'>Click to Signup</a>
+            <p class="gray-text">Not registered? <a href='signup.php' class='green-text'>Create an account</a></p>
+            
         </div>
     </form>
 
