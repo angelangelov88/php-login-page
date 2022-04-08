@@ -90,14 +90,14 @@
         <br>
         <div class="form-group">
             <label for="username">Username:</label>
-            <input type="text" name='username' id='username' value="<?php echo $username ?>" required>
+            <input type="text" name='username' id='username' value="<?php echo $username ?>" required autocomplete="username">
             <span>Username can contain a letter, a number, an underscore or a dot and have a minimum of 5 and maximum of 20 characters</span>
 
         </div>
         <br>
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" name='password' class='password' required>
+            <input type="password" name='password' class='password' required autocomplete="new-password">
             <span>Password must be minimum 8 characters with at least one capital letter, one lowercase letter, one number and one special character (@$!%*#?&)</span>
             <i class="far fa-eye fa-eye-signup" id="togglePassword"></i>
 
@@ -116,6 +116,6 @@
 
 <!-- Scripts -->
 <?php include "./inc/scripts.php" ?>
-
+<script src="./js/togglePasswordIcon.js"></script>
 </body>
 

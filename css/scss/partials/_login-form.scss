@@ -96,17 +96,21 @@ form .form-inner input[type='submit']:hover,
 }
 
 .welcome {
-    width: 100%;
-    max-width: 480px;
     background-color: #FFF;
+    @media only screen and (min-width: $break-s) {
     padding: 15px 30px;
+}
 }
 
 .welcome h2 {
     color: #888;
-    font-size: 28px;
+    font-size: 18px;
     font-weight: 500;
     margin-bottom: 30px;
+    @media only screen and (min-width: $break-s) {
+        font-size: 28px;
+
+    }
 }
 
 .welcome h2 span {
@@ -114,6 +118,7 @@ form .form-inner input[type='submit']:hover,
     font-weight: 700;
 
 }
+
 
 .error {
     color: red;

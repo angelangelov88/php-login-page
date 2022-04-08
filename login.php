@@ -80,12 +80,12 @@ $_SESSION['token'] = get_random_string(60);
                 ?></div>
             <div class='form-group'>
                 <label for='username'>Username:</label>
-                <input type='text' name='username' id='username'>
+                <input type='text' name='username' id='username' autocomplete="username">
             </div>
             <br>
             <div class='form-group'>
                 <label for='password'>Password:</label>
-                <input type='password' name='password' class='password'>
+                <input type='password' name='password' class='password' autocomplete="current-password">
                 <i class="far fa-eye" id="togglePassword"></i>
 
             </div>
@@ -107,6 +107,7 @@ $_SESSION['token'] = get_random_string(60);
 
 <!-- Scripts -->
 <?php include './inc/scripts.php' ?>
+<script src="./js/togglePasswordIcon.js"></script>
 
 </body>
 

@@ -20,22 +20,26 @@ include('./inc/autoload.php');
 <body>
 <?php include './inc/header.php' ?>
 
-    <div class='App'>
-        <div className='welcome'>
-          <h2>Welcome, <span><?php echo htmlspecialchars($user_data->name); ?>!</span></h2>
-          
-          <a href='logout.php'>Logout</a>
-        </div>
+    <div>
+      <div class='welcome'>
+        <h2>Welcome, 
+          <span><?php echo htmlspecialchars($user_data->name); ?>!</span>
+          <a href='logout.php' class="btn">Logout</a>
+        </h2>
+      </div>
    
-        <!-- Welcome 
-        <?php echo htmlspecialchars($_SESSION['username']); ?>
-        <?php echo htmlspecialchars($user_data->name); ?>
-        <br> -->
+      
 
         Your ID is: <?php echo htmlspecialchars($_SESSION['id']); ?><br>
+        Your url_address is: <?php echo htmlspecialchars($_SESSION['url_address']); ?><br>
         Your username is: <?php echo htmlspecialchars($_SESSION['username']); ?><br>
+        Your name is:<?php echo htmlspecialchars($user_data->name); ?><br>
+        Date Created: <?php echo htmlspecialchars($user_data->dtstampcreate); ?><br>
+       <?php echo htmlspecialchars($yourbrowser); ?><br>
+        IP address: <?php echo htmlspecialchars($ip); ?><br>
 
-    </div>
+        
+      </div>
 <!-- FOOTER -->
 <?php include './inc/footer.php' ?>
 
